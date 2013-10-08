@@ -42,44 +42,5 @@ end
 
 package 'libarchive-dev'
 
+include_recipe "razor::_#{node[:razor][:install_from]}"
 
-# jruby, ruby, gems...
-
-include_recipe 'java'
-include_recipe 'rbenv::default'
-include_recipe 'rbenv::ruby_build'
-
-rbenv_ruby node[:razor][:jruby]
-
-rbenv_gem "bundler" do
-  ruby_version node[:razor][:jruby]
-end
-
-# node.default['rbenv']['gems'] = {
-#   '1.9.3-p0' => [
-#     { 'name'    => 'razor-client' },
-#   ],
-#   'jruby-1.6.5' => [
-#     { 'name'    => 'bundler' }
-#   ]
-# }
-
-#git clone https://github.com/puppetlabs/razor-server.git
-git '~razor/razor-server' do
-  repository 'https://github.com/puppetlabs/razor-server.git'
-  reference 'master'
-  action :sync
-end
-
-#TODO config.yml
-
-# rbenv_script 'deploy razor-server' do
-#   rbenv_version 'jruby-1.6.5'
-#   cwd '~razor/razor-server'
-#   action :nothing
-#   code <<-EOF
-# bundle install
-# rake db:migrate
-# torquebox deploy
-# EOF
-# end

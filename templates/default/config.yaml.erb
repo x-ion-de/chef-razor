@@ -1,0 +1,54 @@
+---
+# This is the configuration file for the Razor server. For each
+# environment, the file contains a hash of configuration values. The
+# special environment 'all' is used to set configuration values for all
+# environments
+#
+# The *database_url* setting must be a connection URL for
+# (Sequel)[http://sequel.rubyforge.org/rdoc/files/doc/opening_databases_rdoc.html]
+
+production:
+  database_url: 'jdbc:postgresql:razor_prd?user=razor&password=mypass'
+development:
+  database_url: 'jdbc:postgresql:razor_dev'
+test:
+  database_url: 'jdbc:postgresql:razor?user=razor&password=mypass'
+all:
+  repo_service_uri: <%= @repo_service_uri %>
+  microkernel:
+    debug_level: debug
+    kernel_args:
+  checkin_interval: 15
+  # Colon-separated list of paths; each entry must be a directory in which
+  # we should look for installers
+  installer_path: installers
+  repo_store_root: /opt/razor/repo-store
+  # repo_store_root: /var/lib/razor/repo-store
+  # The *broker_path* is a colon separated list of directories containing
+  # broker types
+  broker_path: brokers
+  facts:
+    # Facts that we should always ignore. These are stripped out before we
+    # do anything else with facts coming in from a node. Each entry in this
+    # array can either be a string (literal name of a fact) or a regexp
+    # enclosed in /../ where any fact that matches the regexp will be
+    # dropped
+    blacklist:
+      - id
+      - /kernel.*/
+      - memorysize
+      - memoryfree
+      - operatingsystem
+      - operatingsystemrelease
+      - osfamily
+      - path
+      - ps
+      - rubysitedir
+      - rubyversion
+      - selinux
+      - sshdsakey
+      - sshrsakey
+      - swapfree
+      - swapsize
+      - timezone
+      - /uptime.*/
