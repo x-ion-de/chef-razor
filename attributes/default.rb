@@ -1,8 +1,10 @@
 default[:razor][:server][:ruby] = 'jruby-1.7.4'
 default[:razor][:client][:ruby] = '1.9.3-p448'
 
-default[:razor][:install_from] = 'source'
 default[:razor][:home] = '/opt/razor'
+default[:razor][:repo_store_root] = "#{node[:razor][:home]}/repo_store"
+
+default[:razor][:install_from] = 'source'
 default[:razor][:repo] = 'git://github.com/puppetlabs/razor-server.git'
 default[:razor][:ref] = 'master'
 

@@ -27,8 +27,6 @@ postgresql_database_user 'razor' do
   action     :create
 end
 
-#pg_conn[:username] = pg_conn[:password] = 'razor'
-
 %w{
   razor_prd
   razor_dev
@@ -43,4 +41,4 @@ end
 package 'libarchive-dev'
 
 include_recipe "razor::_#{node[:razor][:install_from]}"
-
+include_recipe 'razor::_install_mk'

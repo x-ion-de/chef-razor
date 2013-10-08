@@ -8,8 +8,13 @@ rbenv_gem 'bundler' do
   ruby_version node[:razor][:server][:ruby]
 end
 
-directory node[:razor][:home] do
-  recursive true
+[
+  node[:razor][:home],
+  node[:razor][:repo_store_root]
+].each do |dir|
+  directory dir do
+    recursive true
+  end
 end
 
 git node[:razor][:home] do

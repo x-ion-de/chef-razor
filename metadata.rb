@@ -1,6 +1,6 @@
 name             'razor'
-maintainer       'YOUR_COMPANY_NAME'
-maintainer_email 'YOUR_EMAIL'
+maintainer       'Stephan Renatus'
+maintainer_email 's.renatus@cloudbau.de'
 license          'All rights reserved'
 description      'Installs/Configures razor'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
