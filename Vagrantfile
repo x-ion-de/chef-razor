@@ -15,6 +15,11 @@ Vagrant.configure("2") do |config|
       chef.run_list = %w{ apt razor razor::client }
       chef.log_level = :auto
       chef.json = {
+        razor: {
+          mk: {
+            url: 'file:///vagrant/microkernel-001.tar'
+          }
+        },
         postgresql: {
           password: 'postgres'
           }
