@@ -13,3 +13,7 @@ default[:razor][:ref] = 'master'
 # deploy artifacts:
 default[:razor][:torquebox][:url] = 'http://torquebox.org/release/org/torquebox/torquebox-dist/3.0.0/torquebox-dist-3.0.0-bin.zip'
 default[:razor][:server][:url] = 'http://links.puppetlabs.com/razor-server-latest.zip'
+
+default[:razor][:dhcp] = nil # TODO 'dnsmasq'
+
+default[:razor][:service][:provider] = 'runit'

@@ -42,3 +42,11 @@ package 'libarchive-dev'
 
 include_recipe "razor::_#{node[:razor][:install_from]}"
 include_recipe 'razor::_install_mk'
+
+if node[:razor][:dhcp]
+  include_recipe "razor::_#{node[:razor][:dhcp]}"
+end
+
+if node[:razor][:service][:provider]
+  include_recipe "razor::#{node[:razor][:service][:provider]}"
+end

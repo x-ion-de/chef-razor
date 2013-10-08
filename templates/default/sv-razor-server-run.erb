@@ -1,0 +1,5 @@
+#!/bin/sh
+exec 2>&1
+export RBENV_VERSION=<%= @options[:rbenv_version] %>
+export RBENV_ROOT=<%= node[:rbenv][:root_path] %>
+exec <%= node[:rbenv][:root_path] %>/shims/torquebox run --bind-address 0.0.0.0
