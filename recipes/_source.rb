@@ -1,13 +1,11 @@
-# jruby, ruby, gems...
-
 include_recipe 'java'
 include_recipe 'rbenv::default'
 include_recipe 'rbenv::ruby_build'
 
-rbenv_ruby node[:razor][:jruby]
+rbenv_ruby node[:razor][:server][:ruby]
 
-rbenv_gem "bundler" do
-  ruby_version node[:razor][:jruby]
+rbenv_gem 'bundler' do
+  ruby_version node[:razor][:server][:ruby]
 end
 
 directory node[:razor][:home] do
@@ -29,8 +27,8 @@ include_recipe 'razor::_config'
 ].each do |cmd|
   rbenv_execute cmd do
     cwd node[:razor][:home]
-    ruby_version node[:razor][:jruby]
-    action :nothing
-    subscribes :run, "git[#{node[:razor][:home]}]", :immediately
+    ruby_version node[:razor][:server][:ruby]
+    # action :nothing
+    # subscribes :run, "git[#{node[:razor][:home]}]", :immediately
   end
 end
