@@ -45,8 +45,9 @@ package 'libarchive-dev'
 
 # jruby, ruby, gems...
 
-include_recipe "rbenv::default"
-include_recipe "rbenv::ruby_build"
+include_recipe 'java'
+include_recipe 'rbenv::default'
+include_recipe 'rbenv::ruby_build'
 
 rbenv_ruby node[:razor][:jruby]
 
