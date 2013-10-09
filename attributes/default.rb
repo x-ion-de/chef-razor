@@ -1,6 +1,8 @@
 default[:razor][:server][:ruby] = 'jruby-1.7.4'
 default[:razor][:client][:ruby] = '1.9.3-p448'
 
+default[:razor][:host] = node[:ipaddress]
+
 default[:razor][:home] = '/opt/razor'
 default[:razor][:repo_store_root] = "#{node[:razor][:home]}/repo_store"
 
@@ -17,3 +19,6 @@ default[:razor][:server][:url] = 'http://links.puppetlabs.com/razor-server-lates
 default[:razor][:dhcp] = nil # TODO 'dnsmasq'
 
 default[:razor][:service][:provider] = 'runit'
+
+default[:razor][:repos] = {}
+# "ubuntu" => "file:///vagrant/ubuntu.iso"

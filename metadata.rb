@@ -11,3 +11,4 @@ depends 'database'
 depends 'rbenv'
 depends 'java' # jruby!!
 depends 'runit'
+depends 'dnsmasq'
