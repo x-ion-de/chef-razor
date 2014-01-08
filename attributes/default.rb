@@ -1,4 +1,4 @@
-default[:razor][:server][:ruby] = 'jruby-1.7.4'
+default[:razor][:server][:ruby] = 'jruby-1.7.8'
 default[:razor][:client][:ruby] = '1.9.3-p448'
 
 default[:razor][:host] = node[:ipaddress]
