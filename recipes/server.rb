@@ -48,6 +48,6 @@ if node[:razor][:dhcp]
   include_recipe "razor::#{node[:razor][:dhcp]}"
 end
 
-if node[:razor][:service][:provider]
+unless node[:razor][:service][:provider].empty?
   include_recipe "razor::#{node[:razor][:service][:provider]}"
 end
