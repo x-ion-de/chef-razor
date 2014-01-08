@@ -8,6 +8,12 @@ rbenv_gem 'bundler' do
   ruby_version node[:razor][:server][:ruby]
 end
 
+git node[:razor][:home] do
+  repository node[:razor][:repo]
+  reference node[:razor][:ref]
+  action :sync
+end
+
 [
   node[:razor][:home],
   node[:razor][:repo_store_root]
@@ -15,12 +21,6 @@ end
   directory dir do
     recursive true
   end
-end
-
-git node[:razor][:home] do
-  repository node[:razor][:repo]
-  reference node[:razor][:ref]
-  action :sync
 end
 
 execute 'fix Gemfile for archive gem bugfix' do
