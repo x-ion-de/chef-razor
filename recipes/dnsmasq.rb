@@ -11,7 +11,7 @@ include_recipe 'dnsmasq::dhcp'
 directory '/var/lib/tftpboot'
 
 remote_file '/var/lib/tftpboot/undionly.kpxe' do
-  source 'http://boot.ipxe.org/undionly.kpxe'
+  source node[:razor][:ipxe][:url]
   action :create_if_missing
 end
 
