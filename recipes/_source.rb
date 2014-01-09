@@ -30,7 +30,6 @@ include_recipe 'razor::_config'
   rbenv_execute cmd do
     cwd node[:razor][:home]
     ruby_version node[:razor][:server][:ruby]
-    action :nothing
-    subscribes :run, "directory[#{node[:razor][:repo_store_root]}]", :immediately
+    #action :run
   end
 end
