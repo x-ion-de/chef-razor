@@ -14,13 +14,10 @@ git node[:razor][:home] do
   action :sync
 end
 
-[
-  node[:razor][:home],
-  node[:razor][:repo_store_root]
-].each do |dir|
-  directory dir do
-    recursive true
-  end
+directory node[:razor][:repo_store_root] do
+  action :nothing
+  recursive true
+  subscribes :run, "git[#{node[:razor][:home]}]", :immediately
 end
 
 include_recipe 'razor::_config'
@@ -34,6 +31,6 @@ include_recipe 'razor::_config'
     cwd node[:razor][:home]
     ruby_version node[:razor][:server][:ruby]
     action :nothing
-    subscribes :run, "git[#{node[:razor][:home]}]", :immediately
+    subscribes :run, "directory[#{node[:razor][:repo_store_root]}]", :immediately
   end
 end
