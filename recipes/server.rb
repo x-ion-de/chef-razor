@@ -6,7 +6,9 @@ bash 'workaround script for COOK-1406' do
   not_if '/opt/chef/embedded/bin/gem list pg | grep pg'
 end
 
-include_recipe 'postgresql::server'
+if node[:razor][:install_database]
+  include_recipe 'razor::_pq_server'
+end
 
 user 'razor' do
   supports(
@@ -14,12 +16,7 @@ user 'razor' do
   )
 end
 
-pg_conn = {
-  :host      => '127.0.0.1',
-  :port      => 5432,
-  :username  => 'postgres',
-  :password  => node['postgresql']['password']['postgres']
-}
+pg_conn = node[:razor][:database]
 
 postgresql_database_user 'razor' do
   connection pg_conn
@@ -48,6 +45,6 @@ if node[:razor][:dhcp]
   include_recipe "razor::#{node[:razor][:dhcp]}"
 end
 
-unless node[:razor][:service][:provider].empty?
+if node[:razor][:service][:provider]
   include_recipe "razor::#{node[:razor][:service][:provider]}"
 end
