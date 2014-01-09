@@ -16,6 +16,8 @@ user 'razor' do
   )
 end
 
+include_recipe "database::postgresql"
+
 pg_conn = node[:razor][:database]
 
 postgresql_database_user 'razor' do
