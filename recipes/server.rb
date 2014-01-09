@@ -1,10 +1,10 @@
-# Workaround COOK-1406 (postgresql w/ omnibus chef)
-# https://tickets.opscode.com/browse/COOK-1406?focusedCommentId=28255&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-28255
-require 'open-uri'
-bash 'workaround script for COOK-1406' do
-  code open('https://gist.github.com/jtimberman/3954641/raw/375cdd8bd1e7d899702d9e34d411cda3f4fca99b/install.sh').read
-  not_if '/opt/chef/embedded/bin/gem list pg | grep pg'
-end
+# # Workaround COOK-1406 (postgresql w/ omnibus chef)
+# # https://tickets.opscode.com/browse/COOK-1406?focusedCommentId=28255&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-28255
+# require 'open-uri'
+# bash 'workaround script for COOK-1406' do
+#   code open('https://gist.github.com/jtimberman/3954641/raw/375cdd8bd1e7d899702d9e34d411cda3f4fca99b/install.sh').read
+#   not_if '/opt/chef/embedded/bin/gem list pg | grep pg'
+# end
 
 if node[:razor][:install_database]
   include_recipe 'razor::_pq_server'
