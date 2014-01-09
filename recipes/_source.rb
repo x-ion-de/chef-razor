@@ -17,7 +17,7 @@ end
 directory node[:razor][:repo_store_root] do
   action :nothing
   recursive true
-  subscribes :run, "git[#{node[:razor][:home]}]", :immediately
+  subscribes :create, "git[#{node[:razor][:home]}]", :immediately
 end
 
 include_recipe 'razor::_config'
