@@ -6,7 +6,7 @@ default[:razor][:host] = node[:ipaddress]
 default[:razor][:home] = '/opt/razor'
 default[:razor][:repo_store_root] = "#{node[:razor][:home]}/repo_store"
 
-default[:razor][:mk][:url] = 'http://hypnotoad/microkernel-001.tar'
+default[:razor][:mk][:url] = 'http://links.puppetlabs.com/razor-microkernel-latest.tar'
 default[:razor][:ipxe][:url] = 'http://boot.ipxe.org/undionly.kpxe'
 
 default[:razor][:install_from] = 'source'

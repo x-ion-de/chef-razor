@@ -1,10 +1,10 @@
 name             'razor'
-maintainer       'Stephan Renatus'
-maintainer_email 's.renatus@cloudbau.de'
+maintainer       'x-ion GmbH'
+maintainer_email 'j.klare@x-ion.de'
 license          'All rights reserved'
 description      'Installs/Configures razor'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.1.0'
+version          '0.2.0'
 
 depends 'postgresql'
 depends 'database'
