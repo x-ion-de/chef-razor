@@ -6,6 +6,7 @@ rbenv_ruby node[:razor][:server][:ruby]
 
 rbenv_gem 'bundler' do
   ruby_version node[:razor][:server][:ruby]
+  version '1.12.0'
 end
 
 git node[:razor][:home] do
